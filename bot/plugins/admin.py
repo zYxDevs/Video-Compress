@@ -70,16 +70,13 @@ async def unban(c, m):
             quote=True
         )
         return
-    
+
     try:
         user_id = int(m.command[1])
         unban_log_text = f"Unbanning user {user_id}"
-        
+
         try:
-            await c.send_message(
-                user_id,
-                f"Your ban was lifted!"
-            )
+            await c.send_message(user_id, "Your ban was lifted!")
             unban_log_text += '\n\nUser notified successfully!'
         except:
             traceback.print_exc()

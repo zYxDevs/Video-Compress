@@ -37,9 +37,7 @@ async def new_join_f(client, message):
 async def help_message_f(client, message):
     if not await db.is_user_exist(message.chat.id):
         await db.add_user(message.chat.id)
-    ## Force Sub ##
-    update_channel = UPDATES_CHANNEL
-    if update_channel:
+    if update_channel := UPDATES_CHANNEL:
         try:
             user = await client.get_chat_member(update_channel, message.chat.id)
             if user.status == "kicked":
